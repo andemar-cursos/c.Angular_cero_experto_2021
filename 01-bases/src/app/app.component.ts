@@ -6,12 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  titulo: string = 'Contador App';
-  numero: number = 10;
-
-  base: number = 5;
-
-  logica(valor:number) {
-    this.numero += valor;
-  }
+  
 }
