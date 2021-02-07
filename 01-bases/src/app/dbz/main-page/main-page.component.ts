@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Personaje } from '../interfaces/dbz.interfaces';
 
 @Component({
@@ -22,4 +22,8 @@ export class MainPageComponent {
     nombre: '',
     poder: 0,
   };
+
+  agregarNuevoPersonaje(personaje: Personaje): void {
+    this.personajes.push(personaje);
+  }
 }
