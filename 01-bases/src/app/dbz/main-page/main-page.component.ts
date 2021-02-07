@@ -22,18 +22,4 @@ export class MainPageComponent {
     nombre: '',
     poder: 0,
   };
-
-  // Metodos
-  agregar(): void {
-    if (this.nuevo.nombre.trim().length === 0) {
-      return;
-    }
-    console.log(this.nuevo.nombre);
-    this.personajes.push(this.nuevo);
-
-    this.nuevo = {
-      nombre: '',
-      poder: 0,
-    };
-  }
 }
