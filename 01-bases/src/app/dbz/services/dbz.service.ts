@@ -16,12 +16,14 @@ export class DbzService {
   ];
 
   // Constructor
-  constructor() {
-    console.log('servicio inicializado');
-  }
+  constructor() {}
 
   // Metodos
   get getPersonajes(): Personaje[] {
     return [...this.personajes];
+  }
+
+  agregarPersonaje(personaje: Personaje): void {
+    this.personajes.push(personaje);
   }
 }

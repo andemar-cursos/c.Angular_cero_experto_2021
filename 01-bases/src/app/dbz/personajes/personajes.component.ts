@@ -7,12 +7,11 @@ import { DbzService } from '../services/dbz.service';
   templateUrl: './personajes.component.html',
 })
 export class PersonajesComponent {
-
   // Atributos
   get personajes(): Personaje[] {
     return this.dbzService.getPersonajes;
   }
-  
+
   // Constructor
   constructor(private dbzService: DbzService) {}
 }
