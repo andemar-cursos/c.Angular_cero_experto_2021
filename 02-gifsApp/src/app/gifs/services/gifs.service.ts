@@ -14,7 +14,10 @@ export class GifsService {
   public resultados: Gif[] = [];
 
   // Constructor
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    // tslint:disable-next-line: no-non-null-assertion
+    this.historial = JSON.parse(localStorage.getItem('historial')!) || [];
+  }
 
   // Metodos
   get getHistorial(): string[] {
@@ -34,6 +37,9 @@ export class GifsService {
 
     // Se limita la lista a 10. (Cuando se agrega el 11, se elimina el ultimo)
     this.historial = this.historial.splice(0, 10);
+
+    // Save Search
+    localStorage.setItem('historial', JSON.stringify(this.historial));
 
     this.http
       .get<SearchGifsResponse>(
