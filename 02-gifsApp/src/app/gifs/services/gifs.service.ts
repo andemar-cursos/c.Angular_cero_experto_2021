@@ -9,6 +9,9 @@ export class GifsService {
   private historial: string[] = [];
   private apiKey: string = 'TLW0vMP2XfbikRmowavXJhaUjYWGtfCZ';
 
+  // Cambiar any por su tipo correspondiente
+  public resultados: any[] = [];
+
   // Constructor
   constructor(private http: HttpClient) {}
 
@@ -33,8 +36,10 @@ export class GifsService {
 
     this.http
       .get(
-        'https://api.giphy.com/v1/gifs/search?api_key=TLW0vMP2XfbikRmowavXJhaUjYWGtfCZ&q=sword art online&limit=10'
+        `https://api.giphy.com/v1/gifs/search?api_key=TLW0vMP2XfbikRmowavXJhaUjYWGtfCZ&q=${query}&limit=10`
       )
-      .subscribe((resp: any) => console.log(resp.data));
+      .subscribe((resp: any) => {
+        this.resultados = resp.data;
+      });
   }
 }
