@@ -17,6 +17,8 @@ export class GifsService {
   constructor(private http: HttpClient) {
     // tslint:disable-next-line: no-non-null-assertion
     this.historial = JSON.parse(localStorage.getItem('historial')!) || [];
+    // tslint:disable-next-line: no-non-null-assertion
+    this.resultados = JSON.parse(localStorage.getItem('resultados')!) || [];
   }
 
   // Metodos
@@ -47,6 +49,7 @@ export class GifsService {
       )
       .subscribe((resp) => {
         this.resultados = resp.data;
+        localStorage.setItem('resultados', JSON.stringify(this.resultados));
       });
   }
 }
