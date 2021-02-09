@@ -31,17 +31,15 @@ export class GifsService {
     query = query.trim().toLowerCase();
 
     // Evita el historial con elementos duplicados
-    if (this.historial.includes(query)) {
-      return;
+    if (!this.historial.includes(query)) {
+      this.historial.unshift(query);
+
+      // Se limita la lista a 10. (Cuando se agrega el 11, se elimina el ultimo)
+      this.historial = this.historial.splice(0, 10);
+
+      // Save Search
+      localStorage.setItem('historial', JSON.stringify(this.historial));
     }
-
-    this.historial.unshift(query);
-
-    // Se limita la lista a 10. (Cuando se agrega el 11, se elimina el ultimo)
-    this.historial = this.historial.splice(0, 10);
-
-    // Save Search
-    localStorage.setItem('historial', JSON.stringify(this.historial));
 
     this.http
       .get<SearchGifsResponse>(
