@@ -32,7 +32,7 @@ export class PaisInputComponent implements OnInit {
     this.emitEnter.emit(this.termino);
   }
 
-  teclaPresionada(event: any): void {
-    this.debouncer.next(this.termino);
+  teclaPresionada(): void {
+    this.emitdebouncer.next(this.termino);
   }
 }
