@@ -9,6 +9,7 @@ import { PaisService } from '../../services/pais.service';
 export class PorPaisComponent {
   // Atributos
   termino: string = '';
+  hayError: boolean = false;
 
   // Constructor
   constructor(private paisService: PaisService) {}
@@ -16,8 +17,15 @@ export class PorPaisComponent {
   // Metodos
 
   buscar(): void {
-    this.paisService.buscarPais(this.termino).subscribe((resp) => {
-      console.log(resp);
-    });
+    this.hayError = false;
+
+    this.paisService.buscarPais(this.termino).subscribe(
+      (resp) => {
+        console.log(resp);
+      },
+      (err) => {
+        this.hayError = true;
+      }
+    );
   }
 }

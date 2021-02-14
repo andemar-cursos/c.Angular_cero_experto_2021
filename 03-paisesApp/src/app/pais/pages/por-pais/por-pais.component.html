@@ -15,37 +15,35 @@
   </div>
 </div>
 
-<hr>
+<hr />
 
-<div class="alert alert-danger">
-    No se encontro nada con el termino ABC  
+<div *ngIf="hayError" class="alert alert-danger">
+  No se encontro nada con el termino {{termino}}
 </div>
 
-<div class="row">
-    <div class="col">
-
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Bandera</th>
-                    <th>Nombre</th>
-                    <th>Poblacion</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Bandera</td>
-                    <td>nombre</td>
-                    <td>142532534</td>
-                    <td>
-                        <a href="/pais/cri">Ver...</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-    </div>
+<div *ngIf="!hayError" class="row">
+  <div class="col">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Bandera</th>
+          <th>Nombre</th>
+          <th>Poblacion</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Bandera</td>
+          <td>nombre</td>
+          <td>142532534</td>
+          <td>
+            <a href="/pais/cri">Ver...</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
