@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-por-region',
   templateUrl: './por-region.component.html',
-  styles: [`
-    button {
-      margin-right: 5px
-    }
-  `],
+  styles: [
+    `
+      button {
+        margin-right: 5px;
+      }
+    `,
+  ],
 })
 export class PorRegionComponent {
   // Atributos
@@ -20,5 +22,9 @@ export class PorRegionComponent {
   // Metodos
   activarRegion(region: string): void {
     this.regionActiva = region;
+  getClaseCss(region: string): string {
+    return region === this.regionActiva
+      ? 'btn btn-primary'
+      : 'btn btn-outline-primary';
   }
 }
