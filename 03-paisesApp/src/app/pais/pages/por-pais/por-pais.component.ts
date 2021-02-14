@@ -32,4 +32,8 @@ export class PorPaisComponent {
       }
     );
   }
+
+  sugerencia(termino: string): void {
+    this.hayError = false;
+  }
 }
