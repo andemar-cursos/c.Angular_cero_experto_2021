@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, Input } from '@angular/core';
 import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -10,6 +10,8 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class PaisInputComponent implements OnInit {
   // Atributos
+
+  @Input() placeholder: string = '';
 
   @Output() emitEnter: EventEmitter<string> = new EventEmitter<string>();
   @Output() emitdebouncer: EventEmitter<string> = new EventEmitter<string>();
