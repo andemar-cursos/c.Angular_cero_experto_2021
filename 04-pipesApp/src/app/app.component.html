@@ -1,4 +1,18 @@
 <div class="text-layout">
   <h1>{{ nombre | uppercase }}</h1>
 </div>
-<button pButton (click)="mostrarNombre()" label="Cambiar nombre"></button>
+<button
+  pButton
+  class="p-button-help"
+  (click)="mostrarNombre()"
+  label="Cambiar nombre"
+  icon="pi pi-check"
+  iconPos="right"
+></button>
+
+<p-card [header]="nombre | titlecase">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed
+  consequuntur error repudiandae numquam deserunt quisquam repellat libero
+  asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate
+  neque quas!
+</p-card>
