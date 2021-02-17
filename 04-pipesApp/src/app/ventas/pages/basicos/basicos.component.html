@@ -37,6 +37,13 @@
         <li>fecha | date:custom->dd/MM/yy</li>
         <li>fecha | date:custom->dd MMMM, yy</li>
       </ul>
+
+      <hr />
+
+      <ul>
+        <li>fecha | date: "long":'GMT-6'</li>
+        <li>fecha | date: "long":'GMT-4'</li>
+      </ul>
     </p-card>
   </div>
   <div class="p-col-6">
@@ -44,10 +51,18 @@
       <ul>
         <li>{{ fecha }}</li>
         <li>{{ fecha | date }}</li>
-        <li>{{ fecha | date: 'short' }}</li>
-        <li>{{ fecha | date: 'long' }}</li>
-        <li>{{ fecha | date: 'dd/MM/yy' }}</li>
-        <li>{{ fecha | date: 'dd MMMM, yy' }}</li>
+        <li>{{ fecha | date: "short" }}</li>
+        <li>{{ fecha | date: "long" }}</li>
+        <li>{{ fecha | date: "dd/MM/yy" }}</li>
+        <li>{{ fecha | date: "dd MMMM, yy" }}</li>
+      </ul>
+
+      <hr />
+
+      <ul>
+        <li>{{ fecha | date: "long":"GMT-6" }}</li>
+        <li>{{ fecha | date: "long":"GMT-4":"en" }}</li>
+        <li>{{ fecha | date: "long":"GMT-4":"es-CO" }}</li>
       </ul>
     </p-card>
   </div>
