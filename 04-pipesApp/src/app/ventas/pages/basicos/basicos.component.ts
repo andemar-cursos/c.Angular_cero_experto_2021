@@ -13,4 +13,6 @@ export class BasicosComponent {
   nombreupper: string = 'ANDEMAR';
   nombreCompl: string = 'aNdEmAr';
 
+  fecha: Date = new Date();
+
 }
