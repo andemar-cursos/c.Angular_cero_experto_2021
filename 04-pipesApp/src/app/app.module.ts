@@ -1,4 +1,5 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -14,10 +15,14 @@ registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRouterModule, SharedModule, VentasModule],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'es-CO'}
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    AppRouterModule,
+    SharedModule,
+    VentasModule,
   ],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-CO' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
