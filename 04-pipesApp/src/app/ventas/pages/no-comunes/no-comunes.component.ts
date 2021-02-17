@@ -16,11 +16,20 @@ export class NoComunesComponent {
   };
 
   // Atributos I18Plural
-  clientes: string[] = ['a', 'n', 'd', 'e', 'm', 'a', 'r'];
+  clientes: string[] = ['Mashiro', 'Touko', 'Nanami', 'Tsukushi', 'Rui'];
   clientesMap = {
     '=0': 'no tenemos ningun cliente esperando',
     '=1': 'tenemos un cliente esperando',
     '=2': 'tenemos dos clientes esperando',
-    other: 'tenemos # clientes esperando'
+    other: 'tenemos # clientes esperando',
   };
+
+  cambiarCliente(): void {
+    this.nombre = this.nombre === 'Andemar' ? 'Susana' : 'Andemar';
+    this.genero = this.genero === 'masculino' ? 'femenino' : 'masculino';
+  }
+
+  eliminarCliente(): void {
+    this.clientes.pop();
+  }
 }
