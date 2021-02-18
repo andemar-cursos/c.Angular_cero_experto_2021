@@ -1,7 +1,14 @@
 <div class="text-layout">
-    <h1>Pipes personalizados</h1>
+  <h1>Pipes personalizados</h1>
 
-    <p>
-        Pipes creados por {{'nosotros' | mayusculas}}
-    </p>
+  <p>Pipes creados por {{ "nosotros" | mayusculas:enMayus }}</p>
+
+  <button
+    pButton
+    pRipple
+    type="button"
+    label="Toggle mayus"
+    class="p-button-outlined p-button-warning"
+    (click)="enMayus = !enMayus"
+  ></button>
 </div>

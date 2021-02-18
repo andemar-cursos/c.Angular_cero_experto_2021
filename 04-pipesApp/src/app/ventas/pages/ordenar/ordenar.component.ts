@@ -6,11 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class OrdenarComponent implements OnInit {
+export class OrdenarComponent {
+  // Atributos
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  enMayus: boolean = true;
 }
