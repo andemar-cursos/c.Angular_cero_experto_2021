@@ -10,6 +10,7 @@ export class OrdenarComponent {
   // Atributos
 
   enMayus: boolean = true;
+  ordenarPor: string = '';
   heroes: Heroe[] = [
     {
       nombre: 'Super man',
@@ -37,4 +38,8 @@ export class OrdenarComponent {
       color: Color.verde,
     },
   ];
+
+  cambiarOrden(valor: string): void {
+    this.ordenarPor = valor;
+  }
 }
