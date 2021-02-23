@@ -7,9 +7,20 @@ import { Heroe } from '../interfaces/heroes.interface';
   providedIn: 'root',
 })
 export class HeroesService {
+  // Atributos
+  endpoint: string = 'http://localhost:3000/heroes';
+
+  // Constructor
   constructor(private http: HttpClient) {}
+  
+
+  // Metodos
 
   getHeroes(): Observable<Heroe[]> {
-    return this.http.get<Heroe[]>('http://localhost:3000/heroes');
+    return this.http.get<Heroe[]>(this.endpoint);
+  }
+  
+  getById(id: string): Observable<Heroe> {
+    return this.http.get<Heroe>(`${this.endpoint}/${id}`);
   }
 }
