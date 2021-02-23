@@ -23,4 +23,8 @@ export class HeroesService {
   getById(id: string): Observable<Heroe> {
     return this.http.get<Heroe>(`${this.endpoint}/${id}`);
   }
+
+  getSugerencias(termino: string): Observable<Heroe[]> {
+    return this.http.get<Heroe[]>(`${this.endpoint}?q=${termino}&_limit=6`);
+  }
 }
