@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Heroe, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -26,11 +27,24 @@ export class AgregarComponent implements OnInit {
     first_appearance: '',
     publisher: Publisher.DCComics,
   };
+  heroeId: string | undefined;
 
   // Constructor
-  constructor(private heroesService: HeroesService) {}
+  constructor(
+    private heroesService: HeroesService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.heroeId = this.activatedRoute.snapshot.params.id;
+
+    if (this.heroeId !== undefined) {
+      this.heroesService
+        .getById(this.heroeId!)
+        .subscribe((heroe) => (this.heroe = heroe));
+    }
+  }
 
   // Metodos
   guardar(): void {
@@ -38,6 +52,12 @@ export class AgregarComponent implements OnInit {
       return;
     }
 
-    this.heroesService.agregarHeroe(this.heroe).subscribe(console.log);
+    if (this.heroe.id) {
+      this.heroesService.actualizarHeroe(this.heroe).subscribe();
+    } else {
+      this.heroesService.agregarHeroe(this.heroe).subscribe((heroe) => {
+        this.router.navigate(['/heroes/editar', heroe.id]);
+      });
+    }
   }
 }
