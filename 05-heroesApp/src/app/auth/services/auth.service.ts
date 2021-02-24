@@ -2,6 +2,7 @@ import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Auth } from '../interfaces/auth.interfaces';
 
 @Injectable({
@@ -10,6 +11,7 @@ import { Auth } from '../interfaces/auth.interfaces';
 export class AuthService {
   // Atributos
   endpoint: string = `${environment.baseUrl}/usuarios/1`;
+  private auth: Auth | undefined;
 
   // Constructor
   constructor(private http: HttpClient) {}
@@ -17,6 +19,12 @@ export class AuthService {
   // Metodos
 
   login(): Observable<Auth> {
-    return this.http.get<Auth>(this.endpoint);
+    return this.http
+      .get<Auth>(this.endpoint)
+      .pipe(tap((auth) => (this.auth = auth)));
+  }
+
+  get getAuth(): Auth {
+    return { ...this.auth! };
   }
 }
