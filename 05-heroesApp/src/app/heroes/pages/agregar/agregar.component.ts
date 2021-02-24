@@ -6,12 +6,14 @@ import { HeroesService } from '../../services/heroes.service';
 @Component({
   selector: 'app-agregar',
   templateUrl: './agregar.component.html',
-  styles: [`
-    img {
-      width: 100%;
-      border-radius: 5px;
-    }
-  `],
+  styles: [
+    `
+      img {
+        width: 100%;
+        border-radius: 5px;
+      }
+    `,
+  ],
 })
 export class AgregarComponent implements OnInit {
   // Atributos
@@ -64,5 +66,11 @@ export class AgregarComponent implements OnInit {
         this.router.navigate(['/heroes/editar', heroe.id]);
       });
     }
+  }
+
+  borrar(): void {
+    this.heroesService.borrarheroe(this.heroe.id!).subscribe((resp) => {
+      this.router.navigate(['/heroes']);
+    });
   }
 }
