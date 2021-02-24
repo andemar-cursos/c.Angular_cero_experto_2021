@@ -1,16 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-basicos',
   templateUrl: './basicos.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class BasicosComponent implements OnInit {
+  // Atributos
 
-  constructor() { }
+  // Constructor
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  // Metodos
+  guardar(miFormulario: NgForm): void {
+    console.log(miFormulario.value);
   }
-
 }
