@@ -1,8 +1,8 @@
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { Auth } from '../interfaces/auth.interfaces';
 
 @Injectable({
@@ -27,6 +27,19 @@ export class AuthService {
 
   logout(): void {
     this.auth = undefined;
+  }
+
+  verificaAutenticacion(): Observable<boolean> {
+    if (!localStorage.getItem('id')) {
+      return of(false);
+    } else {
+      return this.http.get<Auth>(this.endpoint).pipe(
+        map((auth) => {
+          this.auth = auth;
+          return true;
+        })
+      );
+    }
   }
 
   get getAuth(): Auth {
