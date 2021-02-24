@@ -24,6 +24,10 @@ export class AuthService {
       .pipe(tap((auth) => (this.auth = auth)));
   }
 
+  logout(): void {
+    this.auth = undefined;
+  }
+
   get getAuth(): Auth {
     return { ...this.auth! };
   }
