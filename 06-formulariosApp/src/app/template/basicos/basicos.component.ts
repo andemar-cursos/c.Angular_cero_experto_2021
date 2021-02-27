@@ -10,6 +10,12 @@ export class BasicosComponent implements OnInit {
   // Atributos
   @ViewChild('miFormulario') miFormulario!: NgForm;
 
+  initForm = {
+    producto: 'RTX 4090Ti',
+    precio: 10,
+    exitencias: 10,
+  };
+
   // Constructor
   constructor() {}
 
@@ -18,6 +24,10 @@ export class BasicosComponent implements OnInit {
   // Metodos
   guardar(): void {
     console.log(this.miFormulario.value);
+    this.miFormulario.resetForm({
+      precio: 0,
+      existencias: 0,
+    });
   }
 
   nombreValido(): boolean {
