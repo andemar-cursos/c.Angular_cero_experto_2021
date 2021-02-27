@@ -47,7 +47,10 @@
             class="form-control"
             ngModel
             name="existencias"
+            customMin
+            [minimo]="0"
             placeholder="Existencias del producto"
+            required
           />
         </div>
       </div>
@@ -55,7 +58,11 @@
       <!-- Submit -->
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end">
+          <button
+            type="submit"
+            class="btn btn-primary float-end"
+            [disabled]="miFormulario.invalid"
+          >
             Guardar
           </button>
         </div>
@@ -72,6 +79,8 @@
     <pre>{{ miFormulario.pristine }}</pre>
     <span>Touched</span>
     <pre>{{ miFormulario.touched }}</pre>
+    <span>Custom directive</span>
+    <pre>{{ miFormulario.controls.existencias?.errors | json }}</pre>
   </div>
 </div>
 <div class="row">
