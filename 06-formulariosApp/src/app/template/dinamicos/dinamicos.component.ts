@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-dinamicos',
   templateUrl: './dinamicos.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class DinamicosComponent implements OnInit {
+  // Atributos
+  @ViewChild('miFormulario') miFormulario!: NgForm;
 
-  constructor() { }
+  // Cosntructor
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  // Metodos
+  guardar(): void {
+    console.log('guardar');
   }
-
 }
