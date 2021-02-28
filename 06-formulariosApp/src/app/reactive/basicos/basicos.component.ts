@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-basicos',
@@ -18,9 +18,9 @@ export class BasicosComponent {
 
   // Manera 'automatica' con js litarales
   miFormulario: FormGroup = this.fb.group({
-    nombre: ['RTX 4080ti'],
-    precio: [1500],
-    existencias: [5],
+    nombre: ['RTX 4080ti', [Validators.required, Validators.minLength(3)]],
+    precio: [1500, [Validators.required, Validators.min(0)]],
+    existencias: [5, [Validators.required, Validators.min(0)]],
   });
 
   // Constructor
