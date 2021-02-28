@@ -14,7 +14,9 @@
             formControlName="nombre"
             placeholder="Nombre del producto"
           />
-          <span class="form-text text-danger"> Debe de ser de > 3 letras </span>
+          <span class="form-text text-danger" *ngIf="campoEsValido('nombre')">
+            Debe de ser de > 3 letras
+          </span>
         </div>
       </div>
 
@@ -28,7 +30,7 @@
             formControlName="precio"
             placeholder="Precio del producto"
           />
-          <span class="form-text text-danger">
+          <span class="form-text text-danger" *ngIf="campoEsValido('precio')">
             El precio debe ser 0 o mayor.
           </span>
         </div>
@@ -45,13 +47,23 @@
             name="existencias"
             placeholder="Existencias del producto"
           />
+          <span
+            class="form-text text-danger"
+            *ngIf="campoEsValido('existencias')"
+          >
+            Existencias >= a 0
+          </span>
         </div>
       </div>
 
       <!-- Submit -->
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end" [disabled]="miFormulario.invalid">
+          <button
+            type="submit"
+            class="btn btn-primary float-end"
+            [disabled]="miFormulario.invalid"
+          >
             Guardar
           </button>
         </div>
@@ -68,6 +80,8 @@
     <pre>{{ miFormulario.pristine }}</pre>
     <span>Touched</span>
     <pre>{{ miFormulario.touched }}</pre>
+    <span>Precio</span>
+    <pre>{{ miFormulario.controls.precio.errors | json }}</pre>
   </div>
 </div>
 <div class="row">
