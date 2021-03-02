@@ -29,4 +29,10 @@ export class SwitchesComponent implements OnInit {
   }
 
   // Metodos
+  guardar(): void {
+    const formValue = { ...this.miFormulario.value };
+    delete formValue.condiciones;
+
+    this.persona = formValue;
+  }
 }
