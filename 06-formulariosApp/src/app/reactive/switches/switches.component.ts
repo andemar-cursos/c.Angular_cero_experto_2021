@@ -26,6 +26,15 @@ export class SwitchesComponent implements OnInit {
     // Se agrega la condicion, ya que no viene este valor
     // por defecto desde persona.
     this.miFormulario.reset({ ...this.persona, condiciones: false });
+
+    this.miFormulario.valueChanges.subscribe(({ condiciones, ...rest }) => {
+      // Con la desestructuracion se separa las condiciones
+      // y se inserta lo demas.
+      this.persona = rest;
+    });
+
+    // Esto es para suscribirse a un unico control
+    this.miFormulario.get('condiciones')?.valueChanges.subscribe(console.log);
   }
 
   // Metodos
