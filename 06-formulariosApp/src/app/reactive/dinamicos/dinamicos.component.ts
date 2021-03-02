@@ -66,4 +66,8 @@ export class DinamicosComponent {
 
     this.nuevoFavorito.reset();
   }
+
+  borrar(index: number): void {
+    this.favoritosArr.removeAt(index);
+  }
 }
