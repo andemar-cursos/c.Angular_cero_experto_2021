@@ -23,8 +23,19 @@
     <label class="col-sm-3 col-form-label">Agregar</label>
     <div class="col-sm-9">
       <div class="input-group">
-        <input class="form-control" placeholder="Agregar favorito" />
-        <button class="btn btn-outline-primary" type="button">Agregar</button>
+        <input
+          class="form-control"
+          placeholder="Agregar favorito"
+          [formControl]="nuevoFavorito"
+          (keyup.enter)="agregarFavorito()"
+        />
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          (click)="agregarFavorito()"
+        >
+          Agregar
+        </button>
       </div>
     </div>
   </div>
@@ -57,3 +68,7 @@
 
 <span>Value</span>
 <pre>{{ miFormulario.value | json }}</pre>
+
+<span>Agregar Juego</span>
+<pre>{{ nuevoFavorito.valid }}</pre>
+<pre>{{ nuevoFavorito.value }}</pre>
