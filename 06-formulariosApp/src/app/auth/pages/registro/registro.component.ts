@@ -3,6 +3,7 @@ import { noPuedeSerStrider } from '../../../shared/validators/validaciones';
 import { emailPattern } from '../../../shared/validators/validaciones';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ValidatorsService } from '../../../shared/validators/validators.service';
+import { EmailValidatorService } from '../../../shared/validators/email-validator.service';
 
 @Component({
   selector: 'app-registro',
@@ -22,7 +23,7 @@ export class RegistroComponent implements OnInit {
         ],
       ],
       // Se usa el validador, por atributo estatico
-      email: ['', [Validators.required, Validators.pattern(emailPattern)]],
+      email: ['', [Validators.required, Validators.pattern(emailPattern)], [this.emailValidator]],
       username: ['', [Validators.required, noPuedeSerStrider]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       password2: ['', [Validators.required, Validators.minLength(6)]],
@@ -33,7 +34,11 @@ export class RegistroComponent implements OnInit {
   );
 
   // Constructor
-  constructor(private fb: FormBuilder, private vs: ValidatorsService) {}
+  constructor(
+    private fb: FormBuilder,
+    private vs: ValidatorsService,
+    private emailValidator: EmailValidatorService
+  ) {}
 
   ngOnInit(): void {
     this.miFormulario.reset({
