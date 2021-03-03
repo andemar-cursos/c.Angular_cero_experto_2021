@@ -63,8 +63,29 @@ export class RegistroComponent implements OnInit {
 
   campoNoValido(campo: string): boolean | null {
     return (
-      this.miFormulario.controls[campo]?.errors &&
+      this.miFormulario.controls[campo]?.invalid &&
       this.miFormulario.controls[campo]?.touched
+    );
+  }
+
+  emailRequired(): boolean | null {
+    return (
+      this.miFormulario.controls.email?.errors?.required &&
+      this.miFormulario.controls.email?.touched
+    );
+  }
+
+  emailFormato(): boolean | null {
+    return (
+      this.miFormulario.controls.email?.errors?.pattern &&
+      this.miFormulario.controls.email?.touched
+    );
+  }
+  
+  emailTomado(): boolean | null {
+    return (
+      this.miFormulario.controls.email?.errors?.emailTomado &&
+      this.miFormulario.controls.email?.touched
     );
   }
 }
