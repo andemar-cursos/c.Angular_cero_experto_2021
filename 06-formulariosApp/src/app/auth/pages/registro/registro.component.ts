@@ -23,7 +23,11 @@ export class RegistroComponent implements OnInit {
         ],
       ],
       // Se usa el validador, por atributo estatico
-      email: ['', [Validators.required, Validators.pattern(emailPattern)], [this.emailValidator]],
+      email: [
+        '',
+        [Validators.required, Validators.pattern(emailPattern)],
+        [this.emailValidator],
+      ],
       username: ['', [Validators.required, noPuedeSerStrider]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       password2: ['', [Validators.required, Validators.minLength(6)]],
@@ -45,6 +49,8 @@ export class RegistroComponent implements OnInit {
       nombre: 'Andemar Martinez',
       email: 'andemar@dev.com',
       username: 'Masiro ',
+      password: '123123',
+      password2: '123123',
     });
   }
 
