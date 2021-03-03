@@ -37,6 +37,20 @@ export class RegistroComponent implements OnInit {
     }
   );
 
+  get emailErrorMsg(): string {
+    const errors = this.miFormulario.get('email')?.errors;
+
+    if (errors?.required) {
+      return 'Email es obligatorio';
+    } else if (errors?.pattern) {
+      return 'El valor ingresado no tiene formato de correo';
+    } else if (errors?.emailTomado) {
+      return 'El email ya fue tomado';
+    } else {
+      return '';
+    }
+  }
+
   // Constructor
   constructor(
     private fb: FormBuilder,
@@ -65,27 +79,6 @@ export class RegistroComponent implements OnInit {
     return (
       this.miFormulario.controls[campo]?.invalid &&
       this.miFormulario.controls[campo]?.touched
-    );
-  }
-
-  emailRequired(): boolean | null {
-    return (
-      this.miFormulario.controls.email?.errors?.required &&
-      this.miFormulario.controls.email?.touched
-    );
-  }
-
-  emailFormato(): boolean | null {
-    return (
-      this.miFormulario.controls.email?.errors?.pattern &&
-      this.miFormulario.controls.email?.touched
-    );
-  }
-  
-  emailTomado(): boolean | null {
-    return (
-      this.miFormulario.controls.email?.errors?.emailTomado &&
-      this.miFormulario.controls.email?.touched
     );
   }
 }
