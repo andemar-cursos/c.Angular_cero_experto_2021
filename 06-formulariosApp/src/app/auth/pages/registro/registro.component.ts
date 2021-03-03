@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -13,6 +18,12 @@ export class RegistroComponent implements OnInit {
   nombreApellidoPattern: string = '([a-zA-Z+]+) ([a-zA-Z]+)';
   emailPattern: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
+  noPuedeSerStrider(control: FormControl): any | null {
+    const valor: string = control.value?.trim().toLowerCase();
+
+    return valor === 'andemar' ? { noAndemar: true } : null;
+  }
+
   // Atributos
   miFormulario: FormGroup = this.fb.group({
     nombre: [
@@ -20,6 +31,7 @@ export class RegistroComponent implements OnInit {
       [Validators.required, Validators.pattern(this.nombreApellidoPattern)],
     ],
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+    username: ['', [Validators.required, this.noPuedeSerStrider]],
   });
 
   // Constructor
@@ -29,6 +41,7 @@ export class RegistroComponent implements OnInit {
     this.miFormulario.reset({
       nombre: 'Andemar Martinez',
       email: 'andemar@dev.com',
+      username: 'Masiro',
     });
   }
 
