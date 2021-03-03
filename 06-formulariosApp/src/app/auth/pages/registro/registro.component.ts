@@ -11,16 +11,26 @@ import { ValidatorsService } from '../../../shared/validators/validators.service
 })
 export class RegistroComponent implements OnInit {
   // Atributos
-  miFormulario: FormGroup = this.fb.group({
-    nombre: [
-      '',
-      // Se usa el validador por servicio
-      [Validators.required, Validators.pattern(this.vs.nombreApellidoPattern)],
-    ],
-    // Se usa el validador, por atributo estatico
-    email: ['', [Validators.required, Validators.pattern(emailPattern)]],
-    username: ['', [Validators.required, noPuedeSerStrider]],
-  });
+  miFormulario: FormGroup = this.fb.group(
+    {
+      nombre: [
+        '',
+        // Se usa el validador por servicio
+        [
+          Validators.required,
+          Validators.pattern(this.vs.nombreApellidoPattern),
+        ],
+      ],
+      // Se usa el validador, por atributo estatico
+      email: ['', [Validators.required, Validators.pattern(emailPattern)]],
+      username: ['', [Validators.required, noPuedeSerStrider]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      password2: ['', [Validators.required, Validators.minLength(6)]],
+    },
+    {
+      validators: [this.vs.camposIguales('password', 'password2')],
+    }
+  );
 
   // Constructor
   constructor(private fb: FormBuilder, private vs: ValidatorsService) {}

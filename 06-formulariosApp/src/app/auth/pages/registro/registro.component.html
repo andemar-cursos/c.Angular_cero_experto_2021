@@ -59,8 +59,12 @@
             type="password"
             class="form-control"
             placeholder="Password de su cuenta"
+            formControlName="password"
           />
         </div>
+        <span class="form-text text-danger" *ngIf="campoNoValido('password')">
+          La contrasena debe ser >= a 6 caracteres.
+        </span>
       </div>
       <!-- Password2 -->
       <div class="row mb-3">
@@ -70,8 +74,12 @@
             type="password"
             class="form-control"
             placeholder="Confirmar password"
+            formControlName="password2"
           />
         </div>
+        <span class="form-text text-danger" *ngIf="campoNoValido('password2')">
+          Las contrasenas deben ser iguales.
+        </span>
       </div>
       <div class="row">
         <div class="col">
@@ -83,6 +91,8 @@
 </div>
 
 <h2>Form Valid: {{ miFormulario.valid }}</h2>
+<h2>Form Errors</h2>
+<pre>{{ miFormulario.errors | json }}</pre>
 
 <h5>Nombre</h5>
 <pre>{{ miFormulario.controls.nombre.errors | json }}</pre>
@@ -92,3 +102,9 @@
 
 <h5>Username</h5>
 <pre>{{ miFormulario.controls.username.errors | json }}</pre>
+
+<h5>Password</h5>
+<pre>{{ miFormulario.controls.password.errors | json }}</pre>
+
+<h5>Password2</h5>
+<pre>{{ miFormulario.controls.password2.errors | json }}</pre>
