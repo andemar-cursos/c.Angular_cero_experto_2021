@@ -1,4 +1,3 @@
-import { environment } from './../../../../environments/environment';
 import {
   AfterViewInit,
   Component,
