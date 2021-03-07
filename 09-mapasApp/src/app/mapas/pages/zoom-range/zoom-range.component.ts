@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 
@@ -40,16 +41,18 @@ export class ZoomRangeComponent implements AfterViewInit {
       center: [-76.3092861, 3.5407376],
       zoom: this.zoomLevel,
     });
+
+    this.mapa.on('zoom', (ev) => {
+      this.zoomLevel = this.mapa.getZoom();
+    });
   }
 
   // Metodos
   zoomOut(): void {
     this.mapa.zoomOut();
-    this.zoomLevel = this.mapa.getZoom();
   }
 
   zoomIn(): void {
     this.mapa.zoomIn();
-    this.zoomLevel = this.mapa.getZoom();
   }
 }
