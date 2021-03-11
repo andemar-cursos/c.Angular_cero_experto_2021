@@ -1,12 +1,12 @@
 <h1 class="mt-5">Agregar producto</h1>
 <hr />
 
-<form>
+<form [formGroup]="miFormulario">
   <div class="row g-3 alingn-items-center mb-3">
     <div class="col-auto">
       <label class="col-form-label">Nombre</label>
     </div>
-    <div class="col-auto">
+    <div class="col-auto" formControlName="nombre">
       <input class="form-control" type="text" />
     </div>
     <div class="col-auto">
