@@ -6,11 +6,13 @@
     <div class="col-auto">
       <label class="col-form-label">Nombre</label>
     </div>
-    <div class="col-auto" formControlName="nombre">
-      <input class="form-control" type="text" />
+    <div class="col-auto">
+      <input class="form-control" type="text" formControlName="nombre" />
     </div>
     <div class="col-auto">
-      <span class="form-text">Este campo es requerido</span>
+      <span class="form-text" *ngIf="tieneError('nombre') error-msg"
+        >Este campo es requerido</span
+      >
     </div>
   </div>
 
@@ -22,3 +24,5 @@
 </form>
 
 <h3 class="mt-5">Formulario</h3>
+<pre>Value: {{ miFormulario.value | json }}</pre>
+<pre>Valid: {{ miFormulario.valid }}</pre>

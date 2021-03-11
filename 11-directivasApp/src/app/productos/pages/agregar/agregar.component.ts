@@ -18,4 +18,7 @@ export class AgregarComponent implements OnInit {
   ngOnInit(): void {}
 
   // Metodos
+  tieneError(campo: string): boolean {
+    return this.miFormulario.get(campo)?.invalid || false;
+  }
 }
