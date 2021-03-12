@@ -25,10 +25,13 @@ export class AgregarComponent implements OnInit {
   }
 
   cambiarTexto(): void {
-    this.msg = 'Se cambio';
+    this.msg = Math.random().toString();
   }
 
   cambiarColor(): void {
-    this.color = 'blue';
+    const color = '#xxxxxx'.replace(/x/g, (y) =>
+      ((Math.random() * 16) | 0).toString(16)
+    );
+    this.color = color;
   }
 }
