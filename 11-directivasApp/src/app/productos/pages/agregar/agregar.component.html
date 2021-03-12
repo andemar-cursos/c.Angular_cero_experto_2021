@@ -14,7 +14,7 @@
         error-msg
         [mensaje]="msg"
         [color]="color"
-        *ngIf="tieneError('nombre')"
+        [valido]="!tieneError('nombre')"
       ></span>
     </div>
   </div>
@@ -23,7 +23,7 @@
     <div class="col">
       <button class="btn btn-primary" (click)="cambiarTexto()">Texto</button>
     </div>
-    
+
     <div class="col">
       <button class="btn btn-primary" (click)="cambiarColor()">Color</button>
     </div>

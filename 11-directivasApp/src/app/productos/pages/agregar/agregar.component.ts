@@ -11,7 +11,7 @@ export class AgregarComponent implements OnInit {
   miFormulario: FormGroup = this.fb.group({
     nombre: ['', Validators.required],
   });
-  msg: string = 'Andemar';
+  msg: string = 'Debe haber un texto';
   color: string = 'red';
 
   // Constructor
