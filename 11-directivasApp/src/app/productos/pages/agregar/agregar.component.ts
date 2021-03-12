@@ -11,6 +11,8 @@ export class AgregarComponent implements OnInit {
   miFormulario: FormGroup = this.fb.group({
     nombre: ['', Validators.required],
   });
+  msg: string = 'Andemar';
+  color: string = 'red';
 
   // Constructor
   constructor(private fb: FormBuilder) {}
@@ -20,5 +22,13 @@ export class AgregarComponent implements OnInit {
   // Metodos
   tieneError(campo: string): boolean {
     return this.miFormulario.get(campo)?.invalid || false;
+  }
+
+  cambiarTexto(): void {
+    this.msg = 'Se cambio';
+  }
+
+  cambiarColor(): void {
+    this.color = 'blue';
   }
 }
