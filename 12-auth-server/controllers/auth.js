@@ -1,12 +1,53 @@
 const { response } = require('express');
+const Usuario = require('../models/Usuario');
 
 
-const crearUsuario = (req, res = response) => {
+const crearUsuario = async(req, res = response) => {
 
-    return res.json({
-        ok: true,
-        msg: `Crear usuario /new`
-    });
+    const { email, name, password } = req.body;
+
+
+    try {
+        // Verificar el email
+        let usuario = await Usuario.findOne({ email });
+
+        if(usuario) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'El usuario ya existe con ese email'
+            })
+        }
+
+        // Crear usuario con el modelo
+        usuario = new Usuario(req.body);
+
+    
+        // Hashear la contrasena
+
+    
+        
+        // Generar JWT
+    
+    
+        // Crear usuario de DB
+        await usuario.save();
+
+        // Generar respuesta exitosa
+
+        return res.status(201).json({
+            ok: true,
+            uid: usuario.id,
+            name
+        });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            msg: `Por favor hable con el administrador`
+        });
+    }
+
 }
 
 const loginUsuario = (req, res = response) => {
