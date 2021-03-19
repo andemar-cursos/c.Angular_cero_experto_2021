@@ -32,19 +32,19 @@ const crearUsuario = async(req, res = response) => {
         // Generar JWT
         const token = await generarJWT(usuario.id, usuario.name);
         
-    
+        
         // Crear usuario de DB
         await usuario.save();
-
+        
         // Generar respuesta exitosa
-
+        
         return res.status(201).json({
             ok: true,
             uid: usuario.id,
             name,
             token
         });
-
+        
     } catch (error) {
         console.log(error);
         return res.status(500).json({
@@ -52,17 +52,53 @@ const crearUsuario = async(req, res = response) => {
             msg: `Por favor hable con el administrador`
         });
     }
-
+    
 }
 
-const loginUsuario = (req, res = response) => {
-
+const loginUsuario = async(req, res = response) => {
+    
     const {email, password} = req.body;
+    
+    try {
+        
+        const usuario = await Usuario.findOne({email}); 
+        
+        if(!usuario) {
+            return res.status(500).json({
+                ok: false,
+                msg: 'El correo no existe'
+            })
+        }
+        
+        // Confirmar match pass
+        const validPassword = bcrypt.compareSync(password, usuario.password);
+        
+        if(!validPassword) {
+            return res.status(500).json({
+                ok: false,
+                msg: 'El pass no es valido'
+            })
+        }
+        
+        // Generar JWT
+        const token = await generarJWT(usuario.id, usuario.name);
 
-    return res.json({
-        ok: true,
-        msg: `Login de usuario /`
-    });
+        // Respuesta del servicio
+        return res.json({
+            ok: true,
+            uid: usuario.id,
+            name: usuario.name,
+            token
+        })
+        
+        
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            msg: 'Hable con el administrador'
+        })
+    }
 };
 
 
