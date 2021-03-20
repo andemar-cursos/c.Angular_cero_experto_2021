@@ -32,7 +32,11 @@ export class AuthService {
       tap((resp) => {
         if (resp.ok) {
           localStorage.setItem('token', resp.token!);
-          this.usuario = { name: resp.name!, uid: resp.uid! };
+          this.usuario = {
+            name: resp.name!,
+            uid: resp.uid!,
+            email: resp.email!,
+          };
         }
       }),
       map((resp) => resp.ok),
@@ -52,7 +56,11 @@ export class AuthService {
       tap((resp) => {
         if (resp.ok) {
           localStorage.setItem('token', resp.token!);
-          this.usuario = { name: resp.name!, uid: resp.uid! };
+          this.usuario = {
+            name: resp.name!,
+            uid: resp.uid!,
+            email: resp.email!,
+          };
         }
       }),
       map((resp) => resp.ok),
@@ -73,7 +81,11 @@ export class AuthService {
       .pipe(
         map((resp) => {
           localStorage.setItem('token', resp.token!);
-          this.usuario = { name: resp.name!, uid: resp.uid! };
+          this.usuario = {
+            name: resp.name!,
+            uid: resp.uid!,
+            email: resp.email!,
+          };
           return resp.ok;
         }),
         catchError((err) => of(false))
