@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth/services/auth.service';
+import { Usuario } from '../../auth/interfaces/interfaces';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,8 +17,12 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
   // Atributos
 
+  get getUsuario() {
+    return this.authService.getUsuario;
+  }
+
   // Constructor
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   // Metodos
   logout(): void {
