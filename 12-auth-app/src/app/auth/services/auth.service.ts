@@ -33,7 +33,7 @@ export class AuthService {
         resp.ok ? (this.usuario = { name: resp.name!, uid: resp.uid! }) : null
       ),
       map((resp) => resp.ok),
-      catchError((err) => of(false))
+      catchError((err) => of(err.error.msg))
     );
   }
 }
